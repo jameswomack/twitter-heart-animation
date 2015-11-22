@@ -1,0 +1,66 @@
+
+.HeartAnimationContainer {
+    position: relative;
+    width: 16px;
+    height: 16px;
+    overflow: hidden
+}
+
+.is-animating .HeartAnimationContainer {
+    overflow: visible
+}
+
+.HeartAnimation {
+    position: absolute;
+    background: url(../images/heart-frames.png);
+    background-position: left;
+    background-repeat: no-repeat;
+    background-size: 2900%;
+    height: 50px;
+    width: 50px;
+    left: -100%;
+    top: -100%
+}
+
+@-webkit-keyframes heart-burst {
+    0% {
+        background-position: left
+    }
+
+    100% {
+        background-position: right
+    }
+}
+
+@keyframes heart-burst {
+    0% {
+        background-position: left
+    }
+
+    100% {
+        background-position: right
+    }
+}
+
+.ProfileTweet-action--favorite.is-animating .HeartAnimation {
+    -webkit-animation-timing-function: steps(28);
+    animation-timing-function: steps(28)
+}
+
+.ProfileTweet-action--favorite.is-animating .HeartAnimation {
+    display: inline-block;
+    -webkit-animation-name: heart-burst;
+    animation-name: heart-burst;
+    -webkit-animation-duration: .8s;
+    animation-duration: .8s;
+    -webkit-animation-iteration-count: 1;
+    animation-iteration-count: 1
+}
+
+.ProfileTweet-action--favorite .ProfileTweet-actionButton:hover .HeartAnimation,.ProfileTweet-action--favorite .ProfileTweet-actionButton:focus .HeartAnimation,.favorited .ProfileTweet-action--favorite .HeartAnimation {
+    background-position: right
+}
+
+.ProfileTweet-action--favorite .ProfileTweet-actionButton:not(.is-disabled):not(:hover):not(:focus) .HeartAnimation,.ProfileTweet-action--favorite.is-hoverStateCancelled .ProfileTweet-actionButton:hover .HeartAnimation,.ProfileTweet-action--favorite.is-hoverStateCancelled .ProfileTweet-actionButton:focus .HeartAnimation {
+    background-position: left
+}
